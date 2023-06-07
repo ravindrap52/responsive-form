@@ -1,0 +1,318 @@
+<main class="grid main--wrapper">
+  <section class="self-center"><h1>Your check-in details</h1></section>
+  <form
+    class="grid form--wrapper"
+    [formGroup]="userCheckinDetails"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form--category-container flex flex-column p-2 accordion">
+      <div
+        class="flex justify-between items-center pointer"
+        (click)="toggleInfo()"
+      >
+        <p>Personal Information</p>
+        <span>
+          <img
+            ngSrc="../assets/arrow-down.svg"
+            alt="arrow-down"
+            aria-label="click to hide the currenct tab"
+            height="22"
+            width="22"
+            priority
+          />
+        </span>
+      </div>
+      <div class="flex flex-column" *ngIf="togglePersonnelInfo">
+        <div class="form--min-height">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            placeholder="jane"
+            aria-placeholder="jane"
+            aria-invalid="true"
+            aria-describedby="firstNameHint"
+            formControlName="firstName"
+          />
+          <p
+            class="pb-1 pt-1 error"
+            id="firstNameHint"
+            *ngIf="
+              (userCheckingFormControl.firstName.touched || submitted) &&
+              userCheckingFormControl.firstName.errors?.required
+            "
+          >
+            Enter your Firstname.
+          </p>
+        </div>
+        <div class="form--min-height">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            placeholder="doe"
+            aria-placeholder="doe"
+            aria-invalid="true"
+            aria-describedby="lastNameHint"
+            formControlName="lastName"
+          />
+          <p class="pb-1 pt-1 error" id="lastNameHint" *ngIf="
+          (userCheckingFormControl.lastName.touched || submitted) &&
+          userCheckingFormControl.lastName.errors?.required
+        ">
+            Enter your Lastname.
+          </p>
+        </div>
+        <div class="form--min-height">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            placeholder="janedoe@mail.com"
+            aria-placeholder="janedoe@mail.com"
+            aria-invalid="true"
+            aria-describedby="emailHint"
+            formControlName="email"
+          />
+          <p class="pb-1 pt-1 error" id="emailHint" *ngIf="
+          (userCheckingFormControl.email.touched || submitted) &&
+          userCheckingFormControl.email.errors?.required
+        ">
+            Enter your email address.
+          </p>
+        </div>
+        <div class="form--min-height">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            placeholder="1234567890"
+            aria-placeholder="1234567890"
+            aria-invalid="true"
+            aria-describedby="phoneNumberHint"
+            formControlName="phoneNumber"
+          />
+          <p class="pb-1 pt-1 error" id="phoneNumberHint" *ngIf="
+          (userCheckingFormControl.phoneNumber.touched || submitted) &&
+          userCheckingFormControl.phoneNumber.errors?.required
+        ">
+            Enter your phone number.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="form--category-container flex flex-column p-2 accordion">
+      <div
+        class="flex justify-between items-center pointer"
+        (click)="toggleAddress()"
+      >
+        <p>Address</p>
+        <span>
+          <img
+            ngSrc="../assets/arrow-down.svg"
+            alt="arrow-down"
+            aria-label="click to hide the currenct tab"
+            height="22"
+            width="22"
+            priority
+          />
+        </span>
+      </div>
+      <div class="flex flex-column" *ngIf="toggleAddressInfo">
+        <div class="form--min-height">
+          <label for="street">Street Name</label>
+          <input
+            type="text"
+            id="street"
+            placeholder="name of the street"
+            aria-placeholder="name of the street"
+            aria-invalid="true"
+            aria-describedby="streetHint"
+            formControlName="street"
+          />
+          <p class="pb-1 pt-1 error" id="streetHint" *ngIf="
+          (userCheckingFormControl.street.touched || submitted) &&
+          userCheckingFormControl.street.errors?.required
+        ">
+            Enter your street name.
+          </p>
+        </div>
+        <div class="flex gap">
+          <div class="form--min-height">
+            <label for="houseNumber">House Number</label>
+            <input
+              type="text"
+              id="houseNumber"
+              placeholder="123"
+              aria-placeholder="123"
+              aria-invalid="true"
+              aria-describedby="houseNumberHint"
+              formControlName="houseNumber"
+            />
+            <p class="pb-1 pt-1 error" id="houseNumberHint" *ngIf="
+            (userCheckingFormControl.houseNumber.touched || submitted) &&
+            userCheckingFormControl.houseNumber.errors?.required
+          ">
+              Enter your house number.
+            </p>
+          </div>
+          <div class="form--min-height">
+            <label for="zipCode">Zip Code</label>
+            <input
+              type="text"
+              id="zipCode"
+              placeholder="12345"
+              aria-placeholder="12345"
+              aria-invalid="true"
+              aria-describedby="zipCodeHint"
+              formControlName="zipCode"
+            />
+            <p class="pb-1 pt-1 error" id="zipCodeHint" *ngIf="
+            (userCheckingFormControl.zipCode.touched || submitted) &&
+            userCheckingFormControl.zipCode.errors?.required
+          ">Enter zipcode.</p>
+          </div>
+        </div>
+        <div class="form--min-height">
+          <label for="city">City</label>
+          <input
+            type="text"
+            id="city"
+            placeholder="name of the city"
+            aria-placeholder="name of the city"
+            aria-invalid="true"
+            aria-describedby="cityHint"
+            formControlName="city"
+          />
+          <p class="pb-1 pt-1 error" id="cityHint" *ngIf="
+          (userCheckingFormControl.city.touched || submitted) &&
+          userCheckingFormControl.city.errors?.required
+        ">
+            Enter your city name.
+          </p>
+        </div>
+        <div class="form--min-height">
+          <label for="country">Country</label>
+          <input
+            type="text"
+            id="country"
+            placeholder="name of the country"
+            aria-placeholder="name of the country"
+            aria-invalid="true"
+            aria-describedby="countryHint"
+            formControlName="country"
+          />
+          <p class="pb-1 pt-1 error" id="countryHint" *ngIf="
+          (userCheckingFormControl.country.touched || submitted) &&
+          userCheckingFormControl.country.errors?.required
+        ">
+            Enter your country name.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="form--category-container flex flex-column p-2 accordion">
+      <div
+        class="flex justify-between items-center pointer"
+        (click)="toggleCard()"
+      >
+        <p>Credit card</p>
+        <span>
+          <img
+            ngSrc="../assets/arrow-down.svg"
+            alt="arrow-down"
+            aria-label="click to hide the currenct tab"
+            height="22"
+            width="22"
+            priority
+          />
+        </span>
+      </div>
+      <div class="flex flex-column" *ngIf="toggleCardInfo">
+        <div class="form--min-height">
+          <label for="cardNumber">Card Number</label>
+          <input
+            type="text"
+            id="cardNumber"
+            placeholder="123 456 789 091"
+            aria-placeholder="123 456 789 091"
+            aria-invalid="true"
+            aria-describedby="cardNumberHint"
+            formControlName="cardNumber"
+          />
+          <p class="pb-1 pt-1 error" id="cardNumberHint" *ngIf="
+          (userCheckingFormControl.cardNumber.touched || submitted) &&
+          userCheckingFormControl.cardNumber.errors?.required
+        ">
+            Enter your card number.
+          </p>
+        </div>
+        <div class="flex gap">
+          <div class="form--min-height">
+            <label for="expiryDate">Expiry Date</label>
+            <input
+              type="text"
+              id="expiryDate"
+              placeholder="00 / 00"
+              aria-placeholder="00 / 00"
+              aria-invalid="true"
+              aria-describedby="expiryDateHint"
+              formControlName="expiryDate"
+            />
+            <p class="pb-1 pt-1 error" id="expiryDateHint" *ngIf="
+            (userCheckingFormControl.expiryDate.touched || submitted) &&
+            userCheckingFormControl.expiryDate.errors?.required
+          ">
+              Enter date of expiry.
+            </p>
+          </div>
+          <div class="form--min-height">
+            <label for="cvv">CVV</label>
+            <input
+              type="text"
+              id="cvv"
+              placeholder="123"
+              aria-placeholder="123"
+              aria-invalid="true"
+              aria-describedby="cvvHint"
+              formControlName="cvv"
+            />
+            <p class="pb-1 pt-1 error" id="cvvHint" *ngIf="
+            (userCheckingFormControl.cvv.touched || submitted) &&
+            userCheckingFormControl.cvv.errors?.required
+          ">Enter cvv number.</p>
+          </div>
+        </div>
+        <div class="form--min-height">
+          <label for="cardHolderName">Card Holder Name</label>
+          <input
+            type="text"
+            id="cardHolderName"
+            placeholder="name of the card holder"
+            aria-placeholder="name of the card holder"
+            aria-invalid="true"
+            aria-describedby="cardHolderNameHint"
+            formControlName="cardHolderName"
+          />
+          <p class="pb-1 pt-1 error" id="cardHolderNameHint" *ngIf="
+          (userCheckingFormControl.cardHolderName.touched || submitted) &&
+          userCheckingFormControl.cardHolderName.errors?.required
+        ">
+            Enter your name.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section class="self-center">
+      <p>
+        Enter your card details: its number, expiry date and, 3-digit number on
+        the back of the card. Please provide the credit card holder name as
+        well.
+      </p>
+    </section>
+    <section class="grid justify-center">
+      <button type="submit" class="button">Save</button>
+    </section>
+  </form>
+</main>
